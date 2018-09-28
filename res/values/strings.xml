@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">TicTacToe</string>
+    <string name="chooseText">Wybierz wielkość gry</string>
+    <string name="Button3x3">3x3</string>
+    <string name="Button4x4">4x4</string>
+    <string name="Button5x5">5x5</string>
+    <string name="playerRound3x3">Ruch gracza:</string>
+</resources>
