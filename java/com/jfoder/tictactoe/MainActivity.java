@@ -9,7 +9,11 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-    private int currentContentView; //0 - activity_main, 1 - 3x3 game, 2 - 4x4 game, 3 - 5x5 game
+    private int currentContentView;
+    //0: activity_main
+    //1: game3x3
+    //2: 4x4 game
+    //3  5x5 game
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -8,7 +8,7 @@ import android.widget.TextView;
 public class TTTGame{
     private final int gameSize;
     private int moves;
-    private final int MAX_MOVES; //maximum number on moves available on specified gameSize
+    private final int MAX_MOVES; //maximum number of moves available on specified gameSize
     private ButtonState[][] buttonsState;
     private GameState round;
     private TextView whoseRound;
