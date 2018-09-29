@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private int currentContentView;
+    private TTTGame game;
     //0: activity_main
     //1: game3x3
     //2: 4x4 game
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onButtonClick(View v) {
         Log.d("DEBUG", "onButtonClick called");
+        if(v.getId() == R.id.backButton) onBackPressed();
         if(v.getId() == R.id.button3x3) {
             setContentView(R.layout.game3x3);
             currentContentView = 1;
@@ -31,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
             Button[][] buttons = getButtonsArray(3);
             TextView t1 = (TextView) findViewById(R.id.playerRound);
             TextView t2 = (TextView) findViewById(R.id.roundSymbol);
-            TTTGame game3x3 = new TTTGame(3, buttons, t1, t2);
+            game = new TTTGame(3, buttons, t1, t2);
         }
         if(v.getId() == R.id.button4x4) {
             setContentView(R.layout.game4x4);
@@ -40,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
             Button[][] buttons = getButtonsArray(4);
             TextView t1 = (TextView) findViewById(R.id.playerRound);
             TextView t2 = (TextView) findViewById(R.id.roundSymbol);
-            TTTGame game3x3 = new TTTGame(4, buttons, t1, t2);
+            game = new TTTGame(4, buttons, t1, t2);
         }
         if(v.getId() == R.id.button5x5) {
             setContentView(R.layout.game5x5);
@@ -49,7 +51,10 @@ public class MainActivity extends AppCompatActivity {
             Button[][] buttons = getButtonsArray(5);
             TextView t1 = (TextView) findViewById(R.id.playerRound);
             TextView t2 = (TextView) findViewById(R.id.roundSymbol);
-            TTTGame game3x3 = new TTTGame(5, buttons, t1, t2);
+            game = new TTTGame(5, buttons, t1, t2);
+        }
+        if(v.getId() == R.id.resetButton){
+            if(game != null) game.resetGame();
         }
     }
 

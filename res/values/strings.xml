@@ -5,4 +5,6 @@
     <string name="Button4x4">4x4</string>
     <string name="Button5x5">5x5</string>
     <string name="playerRound3x3">Ruch gracza:</string>
+    <string name="backButton">Wróć</string>
+    <string name="resetButton">Reset</string>
 </resources>

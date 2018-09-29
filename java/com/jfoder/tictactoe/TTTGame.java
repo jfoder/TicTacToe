@@ -19,13 +19,40 @@ public class TTTGame{
         CROSS_MOVE,
         CIRCLE_WIN,
         CROSS_WIN,
-        DRAW
+        DRAW;
+
+        private String labelText;
+        private String symbolText;
+        static{
+            CIRCLE_MOVE.labelText = "Ruch gracza:";
+            CROSS_MOVE.labelText = "Ruch gracza:";
+            CIRCLE_WIN.labelText = "Wygrał gracz:";
+            CROSS_WIN.labelText = "Wygrał gracz:";
+            DRAW.labelText = "Remis!";
+
+            CIRCLE_MOVE.symbolText = "O";
+            CROSS_MOVE.symbolText = "X";
+            CIRCLE_WIN.symbolText = "O";
+            CROSS_WIN.symbolText = "X";
+            DRAW.symbolText = "";
+
+        }
+        public String getLabelText() { return labelText; }
+        public String getSymbolText() { return symbolText; }
     }
 
     private enum FieldState{
         EMPTY,
         CIRCLE,
-        CROSS
+        CROSS;
+
+        private String symbol;
+        static{
+            EMPTY.symbol = "";
+            CIRCLE.symbol = "O";
+            CROSS.symbol = "X";
+        }
+        public String getSymbol() { return symbol; }
     }
 
     private class ButtonState{
@@ -57,6 +84,27 @@ public class TTTGame{
         }
         setOnClickListeners();
         updateGameState();
+    }
+
+    public void resetGame() {
+        for(int i = 0; i < gameSize; i++){
+            for(int j = 0; j < gameSize; j++){
+                buttonsState[i][j].fieldState = FieldState.EMPTY;
+                moves = 0;
+                round = GameState.CIRCLE_MOVE;
+            }
+        }
+        refreshGame();
+    }
+
+    private void refreshGame() {
+        whoseRound.setText(round.getLabelText());
+        roundSymbol.setText(round.getSymbolText());
+        for(int i = 0; i < gameSize; i++){
+            for(int j = 0; j < gameSize; j++){
+                buttonsState[i][j].getButton().setText(buttonsState[i][j].fieldState.getSymbol());
+            }
+        }
     }
 
     private void setOnClickListeners() {
