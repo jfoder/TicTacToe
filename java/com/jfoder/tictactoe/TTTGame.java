@@ -155,13 +155,4 @@ public class TTTGame{
         }
         return true;
     }
-
-//    private boolean checkIfEqual(ButtonState a, ButtonState b, ButtonState c) {
-//        if(a.fieldState == b.fieldState && b.fieldState == c.fieldState) return true;
-//        return false;
-//    }
-//    private boolean checkIfEqual(ButtonState a, ButtonState b, ButtonState c, ButtonState d) {
-//        if(a.fieldState == b.fieldState && b.fieldState == c.fieldState && c.fieldState == d.fieldState) return true;
-//        return false;
-//    }
 }
