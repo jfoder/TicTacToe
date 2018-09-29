@@ -10,17 +10,16 @@
         android:id="@+id/wrapper"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/roundSymbol"
-        app:layout_constraintVertical_bias="0.22000003">
+        app:layout_constraintTop_toBottomOf="@+id/roundSymbol">
 
         <Button
             android:id="@+id/button5_00"
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:textSize="30sp"
             app:layout_constraintStart_toStartOf="@+id/wrapper"
             app:layout_constraintTop_toTopOf="@+id/wrapper" />
 
@@ -28,6 +27,7 @@
             android:id="@+id/button5_10"
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:textSize="30sp"
             app:layout_constraintStart_toStartOf="@+id/wrapper"
             app:layout_constraintTop_toBottomOf="@+id/button5_00" />
 
@@ -35,6 +35,7 @@
             android:id="@+id/button5_20"
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:textSize="30sp"
             app:layout_constraintStart_toStartOf="@+id/wrapper"
             app:layout_constraintTop_toBottomOf="@+id/button5_10" />
 
@@ -42,6 +43,7 @@
             android:id="@+id/button5_30"
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:textSize="30sp"
             app:layout_constraintStart_toStartOf="@+id/wrapper"
             app:layout_constraintTop_toBottomOf="@+id/button5_20" />
 
@@ -49,6 +51,7 @@
             android:id="@+id/button5_40"
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/wrapper"
             app:layout_constraintTop_toBottomOf="@+id/button5_30"
@@ -58,6 +61,7 @@
             android:id="@+id/button5_41"
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/button5_40"
             app:layout_constraintTop_toBottomOf="@+id/button5_31"
@@ -67,6 +71,7 @@
             android:id="@+id/button5_42"
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/button5_41"
             app:layout_constraintTop_toBottomOf="@+id/button5_32"
@@ -76,6 +81,7 @@
             android:id="@+id/button5_43"
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/button5_42"
             app:layout_constraintTop_toBottomOf="@+id/button5_33"
@@ -85,6 +91,7 @@
             android:id="@+id/button5_44"
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/button5_43"
@@ -95,6 +102,7 @@
             android:id="@+id/button5_31"
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/button5_30"
             app:layout_constraintTop_toBottomOf="@+id/button5_21"
@@ -104,6 +112,7 @@
             android:id="@+id/button5_32"
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/button5_31"
             app:layout_constraintTop_toBottomOf="@+id/button5_22"
@@ -113,6 +122,7 @@
             android:id="@+id/button5_33"
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/button5_32"
             app:layout_constraintTop_toBottomOf="@+id/button5_23"
@@ -122,6 +132,7 @@
             android:id="@+id/button5_34"
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -133,6 +144,7 @@
             android:id="@+id/button5_21"
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:textSize="30sp"
             app:layout_constraintStart_toEndOf="@+id/button5_20"
             app:layout_constraintTop_toBottomOf="@+id/button5_11" />
 
@@ -140,6 +152,7 @@
             android:id="@+id/button5_22"
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:textSize="30sp"
             app:layout_constraintStart_toEndOf="@+id/button5_21"
             app:layout_constraintTop_toBottomOf="@+id/button5_12" />
 
@@ -147,6 +160,7 @@
             android:id="@+id/button5_11"
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:textSize="30sp"
             app:layout_constraintStart_toEndOf="@+id/button5_10"
             app:layout_constraintTop_toBottomOf="@+id/button5_01" />
 
@@ -154,6 +168,7 @@
             android:id="@+id/button5_12"
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:textSize="30sp"
             app:layout_constraintStart_toEndOf="@+id/button5_11"
             app:layout_constraintTop_toBottomOf="@+id/button5_02" />
 
@@ -161,6 +176,7 @@
             android:id="@+id/button5_13"
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:textSize="30sp"
             app:layout_constraintStart_toEndOf="@+id/button5_12"
             app:layout_constraintTop_toBottomOf="@+id/button5_03" />
 
@@ -168,6 +184,7 @@
             android:id="@+id/button5_14"
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:textSize="30sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/button5_13"
@@ -177,6 +194,7 @@
             android:id="@+id/button5_23"
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:textSize="30sp"
             app:layout_constraintStart_toEndOf="@+id/button5_22"
             app:layout_constraintTop_toBottomOf="@+id/button5_13" />
 
@@ -184,6 +202,7 @@
             android:id="@+id/button5_24"
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:textSize="30sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/button5_23"
@@ -193,6 +212,7 @@
             android:id="@+id/button5_01"
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:textSize="30sp"
             app:layout_constraintStart_toEndOf="@+id/button5_00"
             app:layout_constraintTop_toTopOf="@+id/wrapper" />
 
@@ -200,6 +220,7 @@
             android:id="@+id/button5_02"
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:textSize="30sp"
             app:layout_constraintStart_toEndOf="@+id/button5_01"
             app:layout_constraintTop_toTopOf="@+id/wrapper" />
 
@@ -207,6 +228,7 @@
             android:id="@+id/button5_03"
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:textSize="30sp"
             app:layout_constraintStart_toEndOf="@+id/button5_02"
             app:layout_constraintTop_toTopOf="@+id/wrapper" />
 
@@ -214,7 +236,11 @@
             android:id="@+id/button5_04"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            tools:layout_editor_absoluteX="240dp" />
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/button5_03"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </android.support.constraint.ConstraintLayout>
 
@@ -265,7 +291,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/wrapper"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="0.32">
 
         <Button
             android:id="@+id/backButton"

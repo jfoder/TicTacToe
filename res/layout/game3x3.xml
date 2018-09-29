@@ -53,6 +53,7 @@
             android:id="@+id/button3_01"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:textSize="50sp"
             app:layout_constraintStart_toEndOf="@+id/button3_00"
             app:layout_constraintTop_toTopOf="@+id/wrapper" />
 
@@ -60,6 +61,7 @@
             android:id="@+id/button3_00"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:textSize="50sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/wrapper" />
 
@@ -67,6 +69,7 @@
             android:id="@+id/button3_02"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:textSize="50sp"
             app:layout_constraintEnd_toEndOf="@+id/wrapper"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/button3_01"
@@ -76,6 +79,7 @@
             android:id="@+id/button3_12"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:textSize="50sp"
             app:layout_constraintEnd_toEndOf="@+id/wrapper"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/button3_11"
@@ -85,6 +89,7 @@
             android:id="@+id/button3_22"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:textSize="50sp"
             app:layout_constraintBottom_toBottomOf="@+id/button3_21"
             app:layout_constraintStart_toEndOf="@+id/button3_21"
             app:layout_constraintTop_toBottomOf="@+id/button3_12"
@@ -94,6 +99,7 @@
             android:id="@+id/button3_21"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:textSize="50sp"
             app:layout_constraintBottom_toBottomOf="@+id/wrapper"
             app:layout_constraintStart_toEndOf="@+id/button3_20"
             app:layout_constraintTop_toBottomOf="@+id/button3_11"
@@ -103,6 +109,7 @@
             android:id="@+id/button3_20"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:textSize="50sp"
             app:layout_constraintBottom_toBottomOf="@+id/wrapper"
             app:layout_constraintStart_toStartOf="@+id/wrapper"
             app:layout_constraintTop_toBottomOf="@+id/button3_10"
@@ -112,6 +119,7 @@
             android:id="@+id/button3_10"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:textSize="50sp"
             app:layout_constraintStart_toStartOf="@+id/wrapper"
             app:layout_constraintTop_toBottomOf="@+id/button3_00" />
 
@@ -119,6 +127,7 @@
             android:id="@+id/button3_11"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:textSize="50sp"
             app:layout_constraintStart_toEndOf="@+id/button3_10"
             app:layout_constraintTop_toBottomOf="@+id/button3_01" />
 
