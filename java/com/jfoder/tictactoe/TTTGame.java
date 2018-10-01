@@ -163,7 +163,7 @@ public class TTTGame{
 
     }
 
-    private boolean checkIfInsideLine(int i, int j) { //method checks if field with coordinates i and j is beginning of winnig line
+    private boolean checkIfInsideLine(int i, int j) { //method checks if field with coordinates i and j is beginning of winning line
         Log.d("DEBUG", "Checking method called");
         if(gameSize == 3 || gameSize == 4) {
             if (buttonsState[i][j].fieldState != FieldState.EMPTY){
@@ -175,6 +175,9 @@ public class TTTGame{
                 }
                 if(i + 2 < gameSize && j + 2 < gameSize) {
                     if(checkIfEqual(buttonsState[i][j], buttonsState[i+1][j+1], buttonsState[i+2][j+2])) return true;
+                }
+                if(i + 2 < gameSize && j - 2 >= 0) {
+                    if(checkIfEqual(buttonsState[i][j], buttonsState[i+1][j-1], buttonsState[i+2][j-2])) return true;
                 }
                 return false;
             }
