@@ -1,18 +1,23 @@
 package com.jfoder.tictactoe;
 
+import android.content.Context;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import java.util.ArrayList;
+import android.support.v7.app.AppCompatActivity;
 
-public class TTTGame{
+public class TTTGame extends AppCompatActivity{
     private final int gameSize;
     private int moves;
     private final int MAX_MOVES; //maximum number of moves available on specified gameSize
+    private ArrayList<ButtonState> winningButtons; //list include IDs of buttons creating winning line
     private ButtonState[][] buttonsState;
     private GameState round;
     private TextView whoseRound;
     private TextView roundSymbol;
+    private Context context;
 
     private enum GameState{
         CIRCLE_MOVE,
@@ -62,49 +67,26 @@ public class TTTGame{
             fieldState = FieldState.EMPTY;
             button = b;
         }
-
-        public FieldState getButtonState() { return fieldState; }
         public Button getButton() { return button; }
-        public void setButtonState(FieldState state) { fieldState = state; }
     }
 
-    public TTTGame(int gameSize, Button[][] buttons, TextView whoseRound, TextView roundSymbol){
+    public TTTGame(int gameSize, Button[][] buttons, TextView playerRound, TextView roundSymbol, Context context){
         this.gameSize = gameSize;
-        this.whoseRound = whoseRound;
+        this.whoseRound = playerRound;
         this.roundSymbol = roundSymbol;
         this.round = GameState.CIRCLE_MOVE;
+        this.context = context;
         moves = 0;
         MAX_MOVES = gameSize * gameSize;
+        winningButtons = new ArrayList<>();
         buttonsState = new ButtonState[gameSize][gameSize];
         for(int i = 0; i < gameSize; i++){
             for(int j = 0; j < gameSize; j++){
-                Log.d("DEBUG", ""+ buttons[0][0].getId());
                 buttonsState[i][j] = new ButtonState(buttons[i][j]);
             }
         }
         setOnClickListeners();
         updateGameState();
-    }
-
-    public void resetGame() {
-        for(int i = 0; i < gameSize; i++){
-            for(int j = 0; j < gameSize; j++){
-                buttonsState[i][j].fieldState = FieldState.EMPTY;
-                moves = 0;
-                round = GameState.CIRCLE_MOVE;
-            }
-        }
-        refreshGame();
-    }
-
-    private void refreshGame() {
-        whoseRound.setText(round.getLabelText());
-        roundSymbol.setText(round.getSymbolText());
-        for(int i = 0; i < gameSize; i++){
-            for(int j = 0; j < gameSize; j++){
-                buttonsState[i][j].getButton().setText(buttonsState[i][j].fieldState.getSymbol());
-            }
-        }
     }
 
     private void setOnClickListeners() {
@@ -135,36 +117,50 @@ public class TTTGame{
         }
     }
 
+    public void resetGame() {
+        for(int i = 0; i < gameSize; i++){
+            for(int j = 0; j < gameSize; j++){
+                buttonsState[i][j].fieldState = FieldState.EMPTY;
+                winningButtons.clear();
+                moves = 0;
+                round = GameState.CIRCLE_MOVE;
+            }
+        }
+        winningButtons.clear();
+        refreshGame();
+    }
+
+    private void refreshGame() {
+        whoseRound.setText(round.getLabelText());
+        roundSymbol.setText(round.getSymbolText());
+        for(int i = 0; i < gameSize; i++){
+            for(int j = 0; j < gameSize; j++){
+                buttonsState[i][j].getButton().setText(buttonsState[i][j].fieldState.getSymbol());
+                buttonsState[i][j].getButton().setBackgroundTintList(context.getResources().getColorStateList(R.color.color_grey));
+
+            }
+        }
+        for(ButtonState buttonState : winningButtons){
+            buttonState.getButton().setBackgroundTintList(context.getResources().getColorStateList(R.color.color_light_yellow));
+        }
+    }
+
     private void updateGameState(){
+        loop:
         for(int i = 0; i < gameSize; i++) {
             for(int j = 0; j < gameSize; j++) {
                 if(checkIfInsideLine(i, j)){
                     if(buttonsState[i][j].fieldState == FieldState.CIRCLE) round = GameState.CIRCLE_WIN;
                     else round = GameState.CROSS_WIN;
-                    break;
+                    break loop;
                 }
             }
         }
-        if(round == GameState.CIRCLE_MOVE && moves < MAX_MOVES) roundSymbol.setText("O");
-        else if(round == GameState.CROSS_MOVE && moves < MAX_MOVES) roundSymbol.setText("X");
-        else if(round == GameState.CIRCLE_WIN){
-            whoseRound.setText("Wygrał gracz:");
-            roundSymbol.setText("O");
-        }
-        else if(round == GameState.CROSS_WIN){
-            whoseRound.setText("Wygrał gracz:");
-            roundSymbol.setText("X");
-        }
-        else if(moves == MAX_MOVES) {
-            round = GameState.DRAW;
-            whoseRound.setText("Remis!");
-            roundSymbol.setText("");
-        }
-
+        if(round != GameState.CIRCLE_WIN && round != GameState.CROSS_WIN && moves == MAX_MOVES) round = GameState.DRAW;
+        refreshGame();
     }
 
     private boolean checkIfInsideLine(int i, int j) { //method checks if field with coordinates i and j is beginning of winning line
-        Log.d("DEBUG", "Checking method called");
         if(gameSize == 3 || gameSize == 4) {
             if (buttonsState[i][j].fieldState != FieldState.EMPTY){
                 if(j + 2 < gameSize) {
@@ -201,8 +197,13 @@ public class TTTGame{
     }
 
     private boolean checkIfEqual(ButtonState... buttons) {
+        winningButtons.add(buttons[0]);
         for(int i = 0; i < buttons.length - 1; i++){
-            if(buttons[i].fieldState != buttons[i+1].fieldState) return false;
+            winningButtons.add(buttons[i + 1]);
+            if(buttons[i].fieldState != buttons[i+1].fieldState) {
+                winningButtons.clear();
+                return false;
+            }
         }
         return true;
     }
