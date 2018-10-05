@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private int currentContentView;
@@ -21,6 +20,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         currentContentView = 0;
+        int a = R.string.backButton;
+        String w = getResources().getString(a);
+        Log.d("DEBUG", w);
     }
 
     public void onButtonClick(View v) {
@@ -32,26 +34,20 @@ public class MainActivity extends AppCompatActivity {
             if(v.getId() == R.id.button3x3) {
                 setContentView(R.layout.game3x3);
                 currentContentView = 1;
-                TextView t1 = findViewById(R.id.playerRound);
-                TextView t2 = findViewById(R.id.roundSymbol);
                 Button[][] buttons = getButtonsArray(3);
-                game = new TTTGame(3, buttons, t1, t2, getApplicationContext());
+                game = new TTTGame(3, buttons, this);
             }
             else if(v.getId() == R.id.button4x4) {
                 setContentView(R.layout.game4x4);
                 currentContentView = 2;
-                TextView t1 = findViewById(R.id.playerRound);
-                TextView t2 = findViewById(R.id.roundSymbol);
                 Button[][] buttons = getButtonsArray(4);
-                game = new TTTGame(4, buttons, t1, t2, getApplicationContext());
+                game = new TTTGame(4, buttons, this);
             }
             else if(v.getId() == R.id.button5x5) {
                 setContentView(R.layout.game5x5);
                 currentContentView = 3;
-                TextView t1 = findViewById(R.id.playerRound);
-                TextView t2 = findViewById(R.id.roundSymbol);
                 Button[][] buttons = getButtonsArray(5);
-                game = new TTTGame(5, buttons, t1, t2, getApplicationContext());
+                game = new TTTGame(5, buttons, this);
             }
         }
     }
@@ -64,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
             for(int j = 0; j < gameSize; j++){
                 seeked = "button" + gameSize + "_" + i + j;
                 int buttonId = res.getIdentifier(seeked, "id", getApplicationContext().getPackageName());
-                result[i][j] = (Button) findViewById(buttonId);
+                result[i][j] = findViewById(buttonId);
             }
         }
         return result;

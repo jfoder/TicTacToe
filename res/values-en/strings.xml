@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="turnOfPlayer">Turn of player:</string>
+    <string name="backButton">Back</string>
+    <string name="resetButton">Reset</string>
+    <string name="chooseGameSize">Choose game size</string>
+    <string name="app_name">Tic Tac Toe</string>
+    <string name="theWinnerIs">The winner is:</string>
+    <string name="draw">Draw!</string>
+</resources>

@@ -1,6 +1,5 @@
 package com.jfoder.tictactoe;
 
-import android.content.Context;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -8,54 +7,43 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import android.support.v7.app.AppCompatActivity;
 
-public class TTTGame extends AppCompatActivity{
-    private final int gameSize;
-    private int moves;
+public class TTTGame{
+    private final int GAME_SIZE;
     private final int MAX_MOVES; //maximum number of moves available on specified gameSize
+    private int moves;
+    private AppCompatActivity mainActivity;
     private ArrayList<ButtonState> winningButtons; //list include IDs of buttons creating winning line
     private ButtonState[][] buttonsState;
     private GameState round;
     private TextView whoseRound;
     private TextView roundSymbol;
-    private Context context;
+
 
     private enum GameState{
-        CIRCLE_MOVE,
-        CROSS_MOVE,
-        CIRCLE_WIN,
-        CROSS_WIN,
-        DRAW;
+        CIRCLE_MOVE(R.string.turnOfPlayer, "O"),
+        CROSS_MOVE(R.string.turnOfPlayer, "X"),
+        CIRCLE_WIN(R.string.theWinnerIs, "O"),
+        CROSS_WIN(R.string.theWinnerIs, "X"),
+        DRAW(R.string.draw, "");
 
-        private String labelText;
+        private int labelTextId;
         private String symbolText;
-        static{
-            CIRCLE_MOVE.labelText = "Ruch gracza:";
-            CROSS_MOVE.labelText = "Ruch gracza:";
-            CIRCLE_WIN.labelText = "Wygrał gracz:";
-            CROSS_WIN.labelText = "Wygrał gracz:";
-            DRAW.labelText = "Remis!";
-
-            CIRCLE_MOVE.symbolText = "O";
-            CROSS_MOVE.symbolText = "X";
-            CIRCLE_WIN.symbolText = "O";
-            CROSS_WIN.symbolText = "X";
-            DRAW.symbolText = "";
-
+        GameState(int labelTextId, String symbolText){
+            this.labelTextId = labelTextId;
+            this.symbolText = symbolText;
         }
-        public String getLabelText() { return labelText; }
+        public int getLabelTextId() { return labelTextId; }
         public String getSymbolText() { return symbolText; }
     }
 
     private enum FieldState{
-        EMPTY,
-        CIRCLE,
-        CROSS;
+        EMPTY(""),
+        CIRCLE("O"),
+        CROSS("X");
 
         private String symbol;
-        static{
-            EMPTY.symbol = "";
-            CIRCLE.symbol = "O";
-            CROSS.symbol = "X";
+        FieldState(String symbol){
+            this.symbol = symbol;
         }
         public String getSymbol() { return symbol; }
     }
@@ -70,12 +58,12 @@ public class TTTGame extends AppCompatActivity{
         public Button getButton() { return button; }
     }
 
-    public TTTGame(int gameSize, Button[][] buttons, TextView playerRound, TextView roundSymbol, Context context){
-        this.gameSize = gameSize;
-        this.whoseRound = playerRound;
-        this.roundSymbol = roundSymbol;
+    public TTTGame(int gameSize, Button[][] buttons, AppCompatActivity mainActivity){
+        this.GAME_SIZE = gameSize;
+        this.mainActivity = mainActivity;
+        this.whoseRound = mainActivity.findViewById(R.id.playerRound);
+        this.roundSymbol = mainActivity.findViewById(R.id.roundSymbol);
         this.round = GameState.CIRCLE_MOVE;
-        this.context = context;
         moves = 0;
         MAX_MOVES = gameSize * gameSize;
         winningButtons = new ArrayList<>();
@@ -90,8 +78,8 @@ public class TTTGame extends AppCompatActivity{
     }
 
     private void setOnClickListeners() {
-        for(int i = 0; i < gameSize; i++){
-            for(int j = 0; j < gameSize; j++){
+        for(int i = 0; i < GAME_SIZE; i++){
+            for(int j = 0; j < GAME_SIZE; j++){
                 Button b = buttonsState[i][j].getButton();
                 final ButtonState btn = buttonsState[i][j];
                 b.setOnClickListener(new View.OnClickListener() {
@@ -118,8 +106,8 @@ public class TTTGame extends AppCompatActivity{
     }
 
     public void resetGame() {
-        for(int i = 0; i < gameSize; i++){
-            for(int j = 0; j < gameSize; j++){
+        for(int i = 0; i < GAME_SIZE; i++){
+            for(int j = 0; j < GAME_SIZE; j++){
                 buttonsState[i][j].fieldState = FieldState.EMPTY;
                 winningButtons.clear();
                 moves = 0;
@@ -131,24 +119,24 @@ public class TTTGame extends AppCompatActivity{
     }
 
     private void refreshGame() {
-        whoseRound.setText(round.getLabelText());
+        whoseRound.setText(mainActivity.getString(round.getLabelTextId()));
         roundSymbol.setText(round.getSymbolText());
-        for(int i = 0; i < gameSize; i++){
-            for(int j = 0; j < gameSize; j++){
+        for(int i = 0; i < GAME_SIZE; i++){
+            for(int j = 0; j < GAME_SIZE; j++){
                 buttonsState[i][j].getButton().setText(buttonsState[i][j].fieldState.getSymbol());
-                buttonsState[i][j].getButton().setBackgroundTintList(context.getResources().getColorStateList(R.color.color_grey));
+                buttonsState[i][j].getButton().setBackgroundTintList(mainActivity.getResources().getColorStateList(R.color.color_grey));
 
             }
         }
         for(ButtonState buttonState : winningButtons){
-            buttonState.getButton().setBackgroundTintList(context.getResources().getColorStateList(R.color.color_light_yellow));
+            buttonState.getButton().setBackgroundTintList(mainActivity.getResources().getColorStateList(R.color.color_light_yellow));
         }
     }
 
     private void updateGameState(){
         loop:
-        for(int i = 0; i < gameSize; i++) {
-            for(int j = 0; j < gameSize; j++) {
+        for(int i = 0; i < GAME_SIZE; i++) {
+            for(int j = 0; j < GAME_SIZE; j++) {
                 if(checkIfInsideLine(i, j)){
                     if(buttonsState[i][j].fieldState == FieldState.CIRCLE) round = GameState.CIRCLE_WIN;
                     else round = GameState.CROSS_WIN;
@@ -161,33 +149,33 @@ public class TTTGame extends AppCompatActivity{
     }
 
     private boolean checkIfInsideLine(int i, int j) { //method checks if field with coordinates i and j is beginning of winning line
-        if(gameSize == 3 || gameSize == 4) {
+        if(GAME_SIZE == 3 || GAME_SIZE == 4) {
             if (buttonsState[i][j].fieldState != FieldState.EMPTY){
-                if(j + 2 < gameSize) {
+                if(j + 2 < GAME_SIZE) {
                     if(checkIfEqual(buttonsState[i][j], buttonsState[i][j+1], buttonsState[i][j+2])) return true;
                 }
-                if(i + 2 < gameSize) {
+                if(i + 2 < GAME_SIZE) {
                     if(checkIfEqual(buttonsState[i][j], buttonsState[i+1][j], buttonsState[i+2][j])) return true;
                 }
-                if(i + 2 < gameSize && j + 2 < gameSize) {
+                if(i + 2 < GAME_SIZE && j + 2 < GAME_SIZE) {
                     if(checkIfEqual(buttonsState[i][j], buttonsState[i+1][j+1], buttonsState[i+2][j+2])) return true;
                 }
-                if(i + 2 < gameSize && j - 2 >= 0) {
+                if(i + 2 < GAME_SIZE && j - 2 >= 0) {
                     if(checkIfEqual(buttonsState[i][j], buttonsState[i+1][j-1], buttonsState[i+2][j-2])) return true;
                 }
                 return false;
             }
             return false;
         }
-        else if(gameSize == 5){
+        else if(GAME_SIZE == 5){
             if (buttonsState[i][j].fieldState != FieldState.EMPTY){
-                if(j + 3 < gameSize &&
+                if(j + 3 < GAME_SIZE &&
                     checkIfEqual(buttonsState[i][j], buttonsState[i][j+1], buttonsState[i][j+2], buttonsState[i][j+3])) return true;
-                if(i + 3 < gameSize &&
+                if(i + 3 < GAME_SIZE &&
                     checkIfEqual(buttonsState[i][j], buttonsState[i+1][j], buttonsState[i+2][j], buttonsState[i+3][j])) return true;
-                if(i + 3 < gameSize && j + 3 < gameSize &&
+                if(i + 3 < GAME_SIZE && j + 3 < GAME_SIZE &&
                     checkIfEqual(buttonsState[i][j], buttonsState[i+1][j+1], buttonsState[i+2][j+2], buttonsState[i+3][j+3])) return true;
-                if(i + 3 < gameSize && j - 3 >= 0 &&
+                if(i + 3 < GAME_SIZE && j - 3 >= 0 &&
                     checkIfEqual(buttonsState[i][j], buttonsState[i+1][j-1], buttonsState[i+2][j-2], buttonsState[i+3][j-3])) return true;
                 return false;
             }
