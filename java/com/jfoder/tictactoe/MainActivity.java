@@ -20,9 +20,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         currentContentView = 0;
-        int a = R.string.backButton;
-        String w = getResources().getString(a);
-        Log.d("DEBUG", w);
     }
 
     public void onButtonClick(View v) {
