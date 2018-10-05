@@ -11,9 +11,9 @@ public class TTTGame{
     private final int GAME_SIZE;
     private final int MAX_MOVES; //maximum number of moves available on specified gameSize
     private int moves;
-    private AppCompatActivity mainActivity;
-    private ArrayList<ButtonState> winningButtons; //list include IDs of buttons creating winning line
-    private ButtonState[][] buttonsState;
+    private AppCompatActivity mainActivity; //activity which give access to resources
+    private ArrayList<ButtonState> winningButtons; //list including IDs of buttons creating winning line
+    private ButtonState[][] buttonsState; //array including Button objects and field states
     private GameState round;
     private TextView whoseRound;
     private TextView roundSymbol;
