@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Kółko i krzyżyk</string>
+    <string name="turnOfPlayer">Ruch gracza:</string>
+    <string name="backButton">Wróć</string>
+    <string name="resetButton">Reset</string>
+    <string name="chooseGameSize">Wybierz wielkość gry</string>
+    <string name="theWinnerIs">Wygrał gracz:</string>
+    <string name="draw">Remis!</string>
+</resources>

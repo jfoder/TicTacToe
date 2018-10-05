@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Tic Tac Toe</string>
+    <string name="chooseGameSize">Choose game size</string>
+    <string name="button3x3" translatable="false">3x3</string>
+    <string name="button4x4" translatable="false">4x4</string>
+    <string name="button5x5" translatable="false">5x5</string>
+    <string name="turnOfPlayer">Turn of player:</string>
+    <string name="backButton">Back</string>
+    <string name="resetButton">Reset</string>
+    <string name="theWinnerIs">The winner is:</string>
+    <string name="draw">Draw!</string>
+</resources>
