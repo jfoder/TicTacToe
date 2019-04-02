@@ -21,6 +21,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:textSize="40sp"
+            android:onClick="onFieldButtonClick"
             app:layout_constraintStart_toStartOf="@+id/wrapper"
             app:layout_constraintTop_toTopOf="@+id/wrapper" />
 
@@ -29,6 +30,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:textSize="40sp"
+            android:onClick="onFieldButtonClick"
             app:layout_constraintStart_toStartOf="@+id/wrapper"
             app:layout_constraintTop_toBottomOf="@+id/button4_00" />
 
@@ -37,6 +39,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:textSize="40sp"
+            android:onClick="onFieldButtonClick"
             app:layout_constraintStart_toStartOf="@+id/wrapper"
             app:layout_constraintTop_toBottomOf="@+id/button4_10" />
 
@@ -45,6 +48,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:textSize="40sp"
+            android:onClick="onFieldButtonClick"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/wrapper"
             app:layout_constraintTop_toBottomOf="@+id/button4_20" />
@@ -54,6 +58,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:textSize="40sp"
+            android:onClick="onFieldButtonClick"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/button4_30"
             app:layout_constraintTop_toBottomOf="@+id/button4_21" />
@@ -63,6 +68,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:textSize="40sp"
+            android:onClick="onFieldButtonClick"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/button4_31"
             app:layout_constraintTop_toBottomOf="@+id/button4_22" />
@@ -72,6 +78,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:textSize="40sp"
+            android:onClick="onFieldButtonClick"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/wrapper"
             app:layout_constraintStart_toEndOf="@+id/button4_32"
@@ -82,6 +89,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:textSize="40sp"
+            android:onClick="onFieldButtonClick"
             app:layout_constraintStart_toEndOf="@+id/button4_20"
             app:layout_constraintTop_toBottomOf="@+id/button4_11" />
 
@@ -90,6 +98,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:textSize="40sp"
+            android:onClick="onFieldButtonClick"
             app:layout_constraintStart_toEndOf="@+id/button4_21"
             app:layout_constraintTop_toBottomOf="@+id/button4_12" />
 
@@ -98,6 +107,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:textSize="40sp"
+            android:onClick="onFieldButtonClick"
             app:layout_constraintStart_toEndOf="@+id/button4_10"
             app:layout_constraintTop_toBottomOf="@+id/button4_01" />
 
@@ -106,6 +116,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:textSize="40sp"
+            android:onClick="onFieldButtonClick"
             app:layout_constraintStart_toEndOf="@+id/button4_11"
             app:layout_constraintTop_toBottomOf="@+id/button4_02" />
 
@@ -114,6 +125,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:textSize="40sp"
+            android:onClick="onFieldButtonClick"
             app:layout_constraintEnd_toEndOf="@+id/wrapper"
             app:layout_constraintStart_toEndOf="@+id/button4_12"
             app:layout_constraintTop_toBottomOf="@+id/button4_03" />
@@ -123,6 +135,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:textSize="40sp"
+            android:onClick="onFieldButtonClick"
             app:layout_constraintEnd_toEndOf="@+id/wrapper"
             app:layout_constraintStart_toEndOf="@+id/button4_22"
             app:layout_constraintTop_toBottomOf="@+id/button4_13" />
@@ -132,6 +145,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:textSize="40sp"
+            android:onClick="onFieldButtonClick"
             app:layout_constraintStart_toEndOf="@+id/button4_00"
             app:layout_constraintTop_toTopOf="@+id/wrapper" />
 
@@ -140,6 +154,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:textSize="40sp"
+            android:onClick="onFieldButtonClick"
             app:layout_constraintStart_toEndOf="@+id/button4_01"
             app:layout_constraintTop_toTopOf="@+id/wrapper" />
 
@@ -148,6 +163,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:textSize="40sp"
+            android:onClick="onFieldButtonClick"
             app:layout_constraintEnd_toEndOf="@+id/wrapper"
             app:layout_constraintStart_toEndOf="@+id/button4_02"
             app:layout_constraintTop_toTopOf="@+id/wrapper" />
