@@ -10,7 +10,6 @@ public class MainActivity extends AppCompatActivity {
         GAME
     }
     private CurrentContent currentContent;
-
     private TicTacToeGame game;
 
 

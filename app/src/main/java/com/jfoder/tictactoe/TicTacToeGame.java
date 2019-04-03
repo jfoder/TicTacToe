@@ -34,11 +34,8 @@ public class TicTacToeGame{
         public int getLabelTextId() { return labelTextId; }
         public String getSymbolText() { return symbolText; }
         public boolean checkIfCorrectMove(PlayerSymbol playerSymbol){
-            if((this == CIRCLE_MOVE && playerSymbol == PlayerSymbol.CIRCLE)
-                || (this == CROSS_MOVE && playerSymbol == PlayerSymbol.CROSS)){
-                return true;
-            }
-            return false;
+            return (this == CIRCLE_MOVE && playerSymbol == PlayerSymbol.CIRCLE)
+                    || (this == CROSS_MOVE && playerSymbol == PlayerSymbol.CROSS);
         }
         public GameState getOppositeTurn(){
             if(this == CIRCLE_MOVE)
