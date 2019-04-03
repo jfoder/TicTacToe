@@ -2,7 +2,7 @@ package com.jfoder.tictactoe;
 
 public abstract class Player {
     protected TicTacToeGame game;
-    private PlayerSymbol playerSymbol;
+    protected PlayerSymbol playerSymbol;
 
     public void makeMove(Field field){
         if(field.getFieldState() == FieldState.EMPTY)
