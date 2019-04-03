@@ -10,7 +10,7 @@ public class TicTacToeGame{
     private int moves;
     private AppCompatActivity mainActivity; //activity which give access to resources
     private ArrayList<Field> winningButtons; //list including IDs of buttons creating winning line
-    private Field[][] buttonsState; //array including Button objects and field states
+    private Field[][] fields; //array including Button objects and field states
     private GameState round;
     private TextView whoseRound;
     private TextView roundSymbol;
@@ -59,11 +59,11 @@ public class TicTacToeGame{
         moves = 0;
         MAX_MOVES = gameSize * gameSize;
         winningButtons = new ArrayList<>();
-        buttonsState = fields;
+        this.fields = fields;
         for(int i = 0; i < gameSize; i++){
             for(int j = 0; j < gameSize; j++){
-                buttonsState[i][j].setFieldState(FieldState.EMPTY);
-                buttonsState[i][j].setPosition(new Position(i, j));
+                this.fields[i][j].setFieldState(FieldState.EMPTY);
+                this.fields[i][j].setPosition(new Position(i, j));
             }
         }
         this.firstPlayer = firstPlayer;
@@ -91,7 +91,7 @@ public class TicTacToeGame{
     }
 
     public Field[][] getFields(){
-        return this.buttonsState;
+        return this.fields;
     }
 
     public int getGameSize(){
@@ -107,7 +107,7 @@ public class TicTacToeGame{
     public void resetGame() {
         for(int i = 0; i < GAME_SIZE; i++){
             for(int j = 0; j < GAME_SIZE; j++){
-                buttonsState[i][j].setFieldState(FieldState.EMPTY);
+                fields[i][j].setFieldState(FieldState.EMPTY);
                 winningButtons.clear();
                 moves = 0;
                 round = GameState.CIRCLE_MOVE;
@@ -122,8 +122,8 @@ public class TicTacToeGame{
         roundSymbol.setText(round.getSymbolText());
         for(int i = 0; i < GAME_SIZE; i++){
             for(int j = 0; j < GAME_SIZE; j++){
-                buttonsState[i][j].getButton().setText(buttonsState[i][j].getFieldState().getSymbol());
-                buttonsState[i][j].getButton().setBackgroundTintList(mainActivity.getResources().getColorStateList(R.color.color_grey));
+                fields[i][j].getButton().setText(fields[i][j].getFieldState().getSymbol());
+                fields[i][j].getButton().setBackgroundTintList(mainActivity.getResources().getColorStateList(R.color.color_grey));
 
             }
         }
@@ -137,7 +137,7 @@ public class TicTacToeGame{
         for(int i = 0; i < GAME_SIZE; i++) {
             for(int j = 0; j < GAME_SIZE; j++) {
                 if(checkIfInsideLine(i, j)){
-                    if(buttonsState[i][j].getFieldState() == FieldState.CIRCLE) round = GameState.CIRCLE_WIN;
+                    if(fields[i][j].getFieldState() == FieldState.CIRCLE) round = GameState.CIRCLE_WIN;
                     else round = GameState.CROSS_WIN;
                     break loop;
                 }
@@ -147,35 +147,35 @@ public class TicTacToeGame{
         refreshGame();
     }
 
-    private boolean checkIfInsideLine(int i, int j) { //method checks if field with coordinates i and j is beginning of winning line
+    private boolean checkIfInsideLine(int i, int j) { //method checks if field with coordinates i and j begins a winning line
         if(GAME_SIZE == 3 || GAME_SIZE == 4) {
-            if (buttonsState[i][j].getFieldState() != FieldState.EMPTY){
+            if (fields[i][j].getFieldState() != FieldState.EMPTY){
                 if(j + 2 < GAME_SIZE) {
-                    if(checkIfEqual(buttonsState[i][j], buttonsState[i][j+1], buttonsState[i][j+2])) return true;
+                    if(checkIfEqual(fields[i][j], fields[i][j+1], fields[i][j+2])) return true;
                 }
                 if(i + 2 < GAME_SIZE) {
-                    if(checkIfEqual(buttonsState[i][j], buttonsState[i+1][j], buttonsState[i+2][j])) return true;
+                    if(checkIfEqual(fields[i][j], fields[i+1][j], fields[i+2][j])) return true;
                 }
                 if(i + 2 < GAME_SIZE && j + 2 < GAME_SIZE) {
-                    if(checkIfEqual(buttonsState[i][j], buttonsState[i+1][j+1], buttonsState[i+2][j+2])) return true;
+                    if(checkIfEqual(fields[i][j], fields[i+1][j+1], fields[i+2][j+2])) return true;
                 }
                 if(i + 2 < GAME_SIZE && j - 2 >= 0) {
-                    if(checkIfEqual(buttonsState[i][j], buttonsState[i+1][j-1], buttonsState[i+2][j-2])) return true;
+                    if(checkIfEqual(fields[i][j], fields[i+1][j-1], fields[i+2][j-2])) return true;
                 }
                 return false;
             }
             return false;
         }
         else if(GAME_SIZE == 5){
-            if (buttonsState[i][j].getFieldState() != FieldState.EMPTY){
+            if (fields[i][j].getFieldState() != FieldState.EMPTY){
                 if(j + 3 < GAME_SIZE &&
-                    checkIfEqual(buttonsState[i][j], buttonsState[i][j+1], buttonsState[i][j+2], buttonsState[i][j+3])) return true;
+                    checkIfEqual(fields[i][j], fields[i][j+1], fields[i][j+2], fields[i][j+3])) return true;
                 if(i + 3 < GAME_SIZE &&
-                    checkIfEqual(buttonsState[i][j], buttonsState[i+1][j], buttonsState[i+2][j], buttonsState[i+3][j])) return true;
+                    checkIfEqual(fields[i][j], fields[i+1][j], fields[i+2][j], fields[i+3][j])) return true;
                 if(i + 3 < GAME_SIZE && j + 3 < GAME_SIZE &&
-                    checkIfEqual(buttonsState[i][j], buttonsState[i+1][j+1], buttonsState[i+2][j+2], buttonsState[i+3][j+3])) return true;
+                    checkIfEqual(fields[i][j], fields[i+1][j+1], fields[i+2][j+2], fields[i+3][j+3])) return true;
                 if(i + 3 < GAME_SIZE && j - 3 >= 0 &&
-                    checkIfEqual(buttonsState[i][j], buttonsState[i+1][j-1], buttonsState[i+2][j-2], buttonsState[i+3][j-3])) return true;
+                    checkIfEqual(fields[i][j], fields[i+1][j-1], fields[i+2][j-2], fields[i+3][j-3])) return true;
                 return false;
             }
             return false;

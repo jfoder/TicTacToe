@@ -5,7 +5,8 @@ public abstract class Player {
     private PlayerSymbol playerSymbol;
 
     public void makeMove(Field field){
-        game.playerMove(field, this);
+        if(field.getFieldState() == FieldState.EMPTY)
+            game.playerMove(field, this);
     }
 
     public abstract boolean isHuman();
